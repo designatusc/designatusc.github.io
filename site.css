@@ -1,0 +1,60 @@
+body{
+  background: #fff;
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+a:visited{
+	text-decoration: none;
+	color: #000;
+}
+a:hover{
+	text-decoration: none;
+	color: #000;
+}
+
+#center{
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  font-family: "National", "Helvetica", "Helvetica Neue", "Arial", sans-serif;
+}
+
+#logo{
+	font-family: "Adobe Caslon Pro", "Times New Roman", serif;
+	font-size: 2.5em;
+	font-weight: 400;
+  margin-bottom: 20px;
+}
+
+#logo img{
+  vertical-align:middle;
+}
+
+#info{
+  width: 300px;
+}
+
+@font-face {
+    font-family: "National";
+    src: url("national-light.otf");
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "National";
+    src: url("national-semibold.otf");
+    font-weight: 600;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Adobe Caslon Pro";
+    src: url("acaslonpro-regular.otf");
+    font-weight: 400;
+    font-style: normal
+}
