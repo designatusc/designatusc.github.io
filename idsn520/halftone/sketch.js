@@ -1,4 +1,5 @@
 var img;              // original user submitted image
+var bwImg;            // grayscale image
 var halftoneImg;      // P5.Renderer that contains halftone
 var maxSize = 100;
 var maxDotSize = 10;
@@ -32,8 +33,6 @@ function draw(){
   background(255);
   if(img != undefined){
     image(halftoneImg,0,0);
-    //drawHalftone();
-    //noLoop();
   } else {
     fill(100);
     noStroke();
@@ -51,9 +50,9 @@ function drawHalftone(){
   //pg.noStroke();
   //pg.fill(0);
 
-  for(var y=0; y<img.height; y++){
-    for(var x=0; x<img.width-1; x++){
-      var c = img.get(x, y);
+  for(var y=0; y<bwImg.height; y++){
+    for(var x=0; x<bwImg.width-1; x++){
+      var c = bwImg.get(x, y);
       var b = brightness(c);  // we'll see about this shit.
 
       halftoneImg.push();
@@ -125,6 +124,10 @@ function imageLoaded(){
   } else {
     img.resize(0, maxSize);
   }
+  bwImg = createGraphics(img.width, img.height);
+  bwImg.background(255);
+  bwImg.image(img, 0, 0);
+  bwImg.filter(GRAY);
   drawHalftone();
 }
 
@@ -155,7 +158,18 @@ Menu.prototype = {
     line(width/2 - 90, -30, width/2 + 90, -30);
     line(width/2 - 90, -25, width/2 + 90, -25);
     line(width/2 - 90, -20, width/2 + 90, -20);
+    this.drawInterface();
     pop();
+  },
+
+  drawInterface:function(){
+    // TODO: make button class with callback/listener
+    if(img != undefined){
+      image(img, 10, 10, 80, 80);
+    }
+    if(bwImg != undefined){
+      image(bwImg, 110, 10, 80, 80);
+    }
   },
 
   handleSliding:function(){
