@@ -32,10 +32,13 @@ a:hover{
 
 #logo img{
   vertical-align:middle;
+  width: 50vw;
 }
 
 #info{
-  width: 300px;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 @font-face {

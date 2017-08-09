@@ -48,8 +48,13 @@ a:hover{
 }
 
 #logo img{
+	float: left;
 	width: 30px;
-	vertical-align: middle;
+}
+
+#logotext{
+	float: left;
+	margin: 5px 0 0 10px;
 }
 
 #title{
