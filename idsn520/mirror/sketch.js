@@ -2,6 +2,7 @@ var gradient;
 var menu;
 var drawImg;
 var lineImg;
+var preImg;
 var lineWeight = 5;
 var startX, startY;
 var endX, endY;
@@ -25,11 +26,13 @@ function setup(){
   constrain = false;
   drawImg = createGraphics(width, height);
   lineImg = createGraphics(width, height);
+  preImg = createGraphics(width, height);
   drawImg.background(255);
   menu = new Menu(gradient);
 }
 
 function draw(){
+  preImg.clear();
   background(255);
   image(drawImg, 0, 0, width, height);
 
@@ -44,9 +47,9 @@ function draw(){
   drawImg.imageMode(CORNER);
 
   if(drawing){
-    stroke(255,0,0);
-    noFill();
-    strokeWeight(lineWeight);
+    preImg.stroke(255,0,0);
+    preImg.noFill();
+    preImg.strokeWeight(lineWeight);
     endX = mouseX;
     endY = mouseY;
     if(freedraw){
@@ -76,9 +79,16 @@ function draw(){
           endY = startY - (endX - startX);
         }
       }
-      line(startX, startY, endX, endY);
+      preImg.line(startX, startY, endX, endY);
     }
   }
+
+  imageMode(CENTER);
+  translate(width/2, height/2);
+  image(preImg, 0, 0, width, height);
+  scale(-1,1);
+  image(preImg, 0, 0, width, height);
+  imageMode(CORNER);
   menu.draw();
 }
 
@@ -145,4 +155,5 @@ function windowResized(){
   drawImg = createGraphics(width, height);
   drawImg.background(255);
   lineImg = createGraphics(width, height);
+  preImg = createGraphics(width, height);
 }
