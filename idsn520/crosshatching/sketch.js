@@ -11,8 +11,6 @@ var endX, endY;
 var drawing = false;
 var constrain = false;
 var freedraw = false;
-var fixedAngle = true;
-var angle;
 
 function preload(){
   gradient = loadImage("../designatusc_gradient.png");
@@ -28,7 +26,6 @@ function setup(){
   textSize(18);
   noStroke();
   constrain = false;
-  angle = QUARTER_PI;
   drawImg = createGraphics(width, height);
   preImg = createGraphics(width, height);
   drawImg.background(255);
@@ -40,39 +37,33 @@ function draw(){
   background(255);
   image(drawImg, 0, 0, width, height);
   if(drawing){
+    //preImg.stroke(255,0,0);
+    //preImg.noFill();
     endX = mouseX;
     endY = mouseY;
 
-    // if(constrain){
-    //   angle = atan2(endY - startY, endX - startX);
-    //   if(angle > 2.7475 || angle < -2.7475){          // left
-    //     endY = startY;
-    //   } else if(angle >= -2.7475 && angle < -1.9625){ // upper left
-    //     endY = startY + (endX - startX);
-    //   } else if(angle >= -1.9625 && angle < -1.1775){ // up
-    //     endX = startX;
-    //   } else if(angle >= -1.1775 && angle < -0.3925){ // upper right
-    //     endY = startY - (endX - startX);
-    //   } else if(angle >= -0.3925 && angle < 0.3925){  // right
-    //     endY = startY;
-    //   } else if(angle >= 0.3925 && angle < 1.1775){   // lower right
-    //     endY = startY + (endX - startX);
-    //   } else if(angle >= 1.1775 && angle < 1.9625){   // down
-    //     endX = startX;
-    //   } else if(angle >= 1.9625 && angle < 2.7475){   // lower left
-    //     endY = startY - (endX - startX);
-    //   }
-    // }
-    if(fixedAngle){
-      var start = createVector(startX, startY);
-      var end = createVector(endX, endY);
-      var dist = p5.Vector.dist(end, start);
-      var vec = p5.Vector.fromAngle(angle);
-      vec.mult(dist);
-      drawHatch(preImg, startX, startY, startX + vec.x, startY + vec.y);
-    } else {
-      drawHatch(preImg, startX, startY, endX, endY);
+    if(constrain){
+      angle = atan2(endY - startY, endX - startX);
+      if(angle > 2.7475 || angle < -2.7475){          // left
+        endY = startY;
+      } else if(angle >= -2.7475 && angle < -1.9625){ // upper left
+        endY = startY + (endX - startX);
+      } else if(angle >= -1.9625 && angle < -1.1775){ // up
+        endX = startX;
+      } else if(angle >= -1.1775 && angle < -0.3925){ // upper right
+        endY = startY - (endX - startX);
+      } else if(angle >= -0.3925 && angle < 0.3925){  // right
+        endY = startY;
+      } else if(angle >= 0.3925 && angle < 1.1775){   // lower right
+        endY = startY + (endX - startX);
+      } else if(angle >= 1.1775 && angle < 1.9625){   // down
+        endX = startX;
+      } else if(angle >= 1.9625 && angle < 2.7475){   // lower left
+        endY = startY - (endX - startX);
+      }
     }
+    //gradientLine(preImg, startX, startY, endX, endY);
+    drawHatch(preImg, startX, startY, endX, endY);
 
   }
   image(preImg, 0, 0, width, height);
@@ -116,22 +107,6 @@ function keyPressed(){
     if(lineWeight > 1){
       lineWeight--;
     }
-  } else if(keyCode == UP_ARROW){
-    hatchNum++;
-    hatchSpacing = hatchWidth / hatchNum;
-  } else if(keyCode == DOWN_ARROW){
-    if(hatchNum > 1){
-      hatchNum--;
-      hatchSpacing = hatchWidth / hatchNum;
-    }
-  } else if(keyCode == RIGHT_ARROW){
-    hatchWidth++;
-    hatchSpacing = hatchWidth / hatchNum;
-  } else if(keyCode == LEFT_ARROW){
-    if(hatchWidth > 2){
-      hatchWidth--;
-      hatchSpacing = hatchWidth / hatchNum;
-    }
   } else if(keyCode == SHIFT){
     constrain = true;
   } else if(key == "1"){
@@ -164,14 +139,11 @@ function mousePressed(){
 function mouseReleased(){
   menu.mouseReleased();
   drawing = false;
-  if(fixedAngle){
-    var start = createVector(startX, startY);
-    var end = createVector(endX, endY);
-    var dist = p5.Vector.dist(end, start);
-    var vec = p5.Vector.fromAngle(angle);
-    vec.mult(dist);
-    drawHatch(drawImg, startX, startY, startX + vec.x, startY + vec.y);
-  } else {
+  if(!freedraw){
+    // drawImg.stroke(0);
+    // drawImg.strokeWeight(lineWeight);
+    // drawImg.line(startX, startY, endX, endY);
+    //gradientLine(drawImg, startX, startY, endX, endY);
     drawHatch(drawImg, startX, startY, endX, endY);
   }
 }
