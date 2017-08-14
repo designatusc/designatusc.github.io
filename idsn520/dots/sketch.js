@@ -18,6 +18,12 @@ function setup(){
   drawImg = createGraphics(width, height);
   drawImg.background(255);
   menu = new Menu(gradient);
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
+  menu.addSlider(300, 50, 200, 30, "Dot Size:", 1, 50, dotSize, changeDotSize);
+}
+
+function changeDotSize(size){
+  dotSize = size;
 }
 
 function draw(){
@@ -63,6 +69,14 @@ function mouseMoved(){
       menu.expand();
     } else {
       menu.contract();
+    }
+  }
+}
+
+function mouseDragged(){
+  if(menu != undefined){
+    if(mouseY > height - menu.height){
+      menu.mouseDragged();
     }
   }
 }

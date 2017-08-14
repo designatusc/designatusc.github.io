@@ -28,6 +28,7 @@ function setup(){
   colors = [color(255,0,0), color(0,0,255)];
   positions = [0, 1];
   menu = new Menu(gradient);
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
 }
 
 function draw(){

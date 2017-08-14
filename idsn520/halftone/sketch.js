@@ -26,6 +26,7 @@ function setup(){
   noStroke();
   background(255);
   menu = new Menu();
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
 }
 
 

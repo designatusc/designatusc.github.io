@@ -21,6 +21,7 @@ function setup(){
   drawLines();
   drawImg = createGraphics(width, height);
   menu = new Menu(gradient);
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
 }
 
 

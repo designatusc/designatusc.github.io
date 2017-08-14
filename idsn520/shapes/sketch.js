@@ -9,7 +9,7 @@ var createMode;
 var startX, startY;
 var endX, endY;
 var d = 0;  // diameter used for drawing
-var canvas;
+var rot = 0;
 
 function preload(){
   gradient = loadImage("../designatusc_gradient.png");
@@ -18,7 +18,6 @@ function preload(){
 function setup(){
   canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("sketch");
-  //context = canvas.getContext('2D');
   frameRate(60);
   createMode = CORNER;
   rectMode(createMode);
@@ -33,6 +32,7 @@ function setup(){
   drawImg.rectMode(createMode);
   drawImg.ellipseMode(createMode);
   menu = new Menu(gradient);
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
 }
 
 function draw(){
@@ -67,54 +67,74 @@ function drawShape(c){
 }
 
 function drawEllipse(c, w, h){
+  c.push();
+  c.translate(startX, startY);
+  if(keyIsPressed && key == "a"){
+    rot += 0.05;
+  } else if(keyIsPressed && key == "d"){
+    rot -= 0.05;
+  }
+  c.rotate(rot);
+
   if(createMode == CORNER){
     if(constrain){
       d = Math.sqrt(w*w + h*h);
       if(w < 0 && h >= 0){
-        c.ellipse(startX - d, startY, d, d);
+        c.ellipse(0 - d, 0, d, d);
       } else if(w < 0 && h < 0){
-        c.ellipse(startX - d, startY - d, d, d);
+        c.ellipse(0 - d, 0 - d, d, d);
       } else if(w > 0 && h <= 0){
-        c.ellipse(startX, startY - d, d, d);
+        c.ellipse(0, 0 - d, d, d);
       } else {
-        c.ellipse(startX, startY, d, d);
+        c.ellipse(0, 0, d, d);
       }
     } else {
       if(w < 0 && h >= 0){
-        c.ellipse(startX + w, startY, w, h);
+        c.ellipse(0 + w, 0, w, h);
       } else if(w < 0 && h < 0){
-        c.ellipse(startX + w, startY + h, w, h);
+        c.ellipse(0 + w, 0 + h, w, h);
       } else if(w > 0 && h <= 0){
-        c.ellipse(startX, startY + h, w, h);
+        c.ellipse(0, 0 + h, w, h);
       } else {
-        c.ellipse(startX, startY, w, h);
+        c.ellipse(0, 0, w, h);
       }
     }
   } else {
     if(constrain){
       d = Math.sqrt(w*w + h*h);
-      c.ellipse(startX, startY, d, d);
+      c.ellipse(0, 0, d, d);
     } else {
-      c.ellipse(startX, startY, w, h);
+      c.ellipse(0, 0, w, h);
     }
   }
+
+  c.pop();
 }
 
 function drawRectangle(c, w, h){
+  c.push();
+  c.translate(startX, startY);
+  if(keyIsPressed && key == "a"){
+    rot += 0.05;
+  } else if(keyIsPressed && key == "d"){
+    rot -= 0.05;
+  }
+  c.rotate(rot);
+
   if(createMode == CORNER){
     if(constrain){
       d = Math.sqrt(w*w + h*h);
       if(w < 0 && h >= 0){
-        c.rect(startX, startY, -d, d);
+        c.rect(0, 0, -d, d);
       } else if(w < 0 && h < 0){
-        c.rect(startX, startY, -d, -d);
+        c.rect(0, 0, -d, -d);
       } else if(w > 0 && h <= 0){
-        c.rect(startX, startY, d, -d);
+        c.rect(0, 0, d, -d);
       } else {
-        c.rect(startX, startY, d, d);
+        c.rect(0, 0, d, d);
       }
     } else {
-      c.rect(startX, startY, w, h);
+      c.rect(0, 0, w, h);
     }
   } else {
     if(constrain){
@@ -124,6 +144,8 @@ function drawRectangle(c, w, h){
       c.rect(startX, startY, w, h);
     }
   }
+
+  c.pop();
 }
 
 function keyPressed(){

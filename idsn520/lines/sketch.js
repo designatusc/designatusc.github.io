@@ -7,6 +7,7 @@ var endX, endY;
 var drawing = false;
 var constrain = false;
 var freedraw = false;
+var drawMode = 0;
 
 function preload(){
   gradient = loadImage("../designatusc_gradient.png");
@@ -25,6 +26,20 @@ function setup(){
   drawImg = createGraphics(width, height);
   drawImg.background(255);
   menu = new Menu(gradient);
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
+  menu.addSlider(300, 50, 200, 30, "Line Weight:", 1, 50, lineWeight, changeLineWeight);
+  var rb = menu.addRadioButtons(550, 50, "Drawing Mode:", changeDrawingMode)
+  rb.addButton(0, "Lines", true);
+  rb.addButton(1, "Free", false);
+}
+
+function changeDrawingMode(mode){
+  //console.log(mode);
+  drawMode = mode;
+}
+
+function changeLineWeight(size){
+  lineWeight = size;
 }
 
 function draw(){
@@ -36,7 +51,7 @@ function draw(){
     strokeWeight(lineWeight);
     endX = mouseX;
     endY = mouseY;
-    if(freedraw){
+    if(drawMode == 1){
       startX = pmouseX;
       startY = pmouseY;
       drawImg.stroke(0);
@@ -110,10 +125,12 @@ function mouseReleased(){
   drawing = false;
   //endX = mouseX;
   //endY = mouseY;
-  if(!freedraw){
-    drawImg.stroke(0);
-    drawImg.strokeWeight(lineWeight);
-    drawImg.line(startX, startY, endX, endY);
+  if(!menu.isOver()){
+    if(drawMode == 0){
+      drawImg.stroke(0);
+      drawImg.strokeWeight(lineWeight);
+      drawImg.line(startX, startY, endX, endY);
+    }
   }
 }
 
@@ -123,6 +140,14 @@ function mouseMoved(){
       menu.expand();
     } else {
       menu.contract();
+    }
+  }
+}
+
+function mouseDragged(){
+  if(menu != undefined){
+    if(mouseY > height - menu.height){
+      menu.mouseDragged();
     }
   }
 }

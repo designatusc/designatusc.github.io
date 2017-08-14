@@ -30,6 +30,7 @@ function setup(){
   preImg = createGraphics(width, height);
   drawImg.background(255);
   menu = new Menu(gradient);
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
 }
 
 function draw(){
