@@ -33,6 +33,31 @@ function setup(){
   drawImg.ellipseMode(createMode);
   menu = new Menu(gradient);
   menu.addButton(100, 50, 100, 30, "Save", saveImage);
+  menu.addSlider(300, 50, 200, 30, "Rotation:", 0, 360, rot, changeAngle);
+  var rb = menu.addRadioButtons(550, 50, "Shape:", changeDrawingMode)
+  rb.addButton(0, "Rectangle", true);
+  rb.addButton(1, "Ellipse", false);
+  var rb2 = menu.addRadioButtons(700, 50, "Create Mode:", changeCreateMode)
+  rb2.addButton(0, "Corner", true);
+  rb2.addButton(1, "Center", false);
+}
+
+function changeAngle(angle){
+  rot = radians(angle);
+}
+
+function changeCreateMode(mode){
+  if(mode == 0){
+    createMode = CORNER;
+  } else {
+    createMode = CENTER;
+  }
+  drawImg.rectMode(createMode);
+  drawImg.ellipseMode(createMode);
+}
+
+function changeDrawingMode(mode){
+  drawMode = mode;
 }
 
 function draw(){
@@ -53,6 +78,7 @@ function drawShape(c){
   endY = mouseY;
   var w = endX-startX;
   var h = endY-startY;
+  console.log(startX, startY);
   if(createMode == CENTER){
     w *= 2;
     h *= 2;
@@ -139,9 +165,9 @@ function drawRectangle(c, w, h){
   } else {
     if(constrain){
       d = Math.sqrt(w*w + h*h);
-      c.rect(startX, startY, d, d);
+      c.rect(0, 0, d, d);
     } else {
-      c.rect(startX, startY, w, h);
+      c.rect(0, 0, w, h);
     }
   }
 
@@ -195,9 +221,17 @@ function mouseReleased(){
   }
 }
 
+function mouseDragged(){
+  if(menu != undefined){
+    if(menu.isOver()){
+      menu.mouseDragged();
+    }
+  }
+}
+
 function mouseMoved(){
   if(menu != undefined){
-    if(mouseY > height - menu.height){
+    if(menu.isOver()){
       menu.expand();
     } else {
       menu.contract();

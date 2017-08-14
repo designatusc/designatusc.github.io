@@ -8,6 +8,7 @@ var drawing = false;
 var constrain = false;
 var freedraw = false;
 var drawMode = 0;
+var capMode = 0;
 
 function preload(){
   gradient = loadImage("../designatusc_gradient.png");
@@ -31,10 +32,23 @@ function setup(){
   var rb = menu.addRadioButtons(550, 50, "Drawing Mode:", changeDrawingMode)
   rb.addButton(0, "Lines", true);
   rb.addButton(1, "Free", false);
+  var rb2 = menu.addRadioButtons(700, 50, "End Cap Mode:", changeCapMode)
+  rb2.addButton(0, "Round", true);
+  rb2.addButton(1, "Square", false);
+}
+
+function changeCapMode(mode){
+  capMode = mode;
+  if(mode == 0){
+    strokeCap(ROUND);
+    drawImg.strokeCap(ROUND);
+  } else {
+    strokeCap(SQUARE);
+    drawImg.strokeCap(SQUARE);
+  }
 }
 
 function changeDrawingMode(mode){
-  //console.log(mode);
   drawMode = mode;
 }
 
