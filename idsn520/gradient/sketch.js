@@ -29,6 +29,20 @@ function setup(){
   positions = [0, 1];
   menu = new Menu(gradient);
   menu.addButton(100, 50, 100, 30, "Save", saveImage);
+  menu.addColorBox(250, 50, 50, 50, colors[0], changeColorA);
+  menu.addColorBox(350, 50, 50, 50, colors[1], changeColorB);
+  console.log(menu.interfaceElements.length);
+}
+
+function changeColorA(c){
+  //console.log("change color A: ", c);
+  colors[0] = c;
+  console.log(colors);
+}
+function changeColorB(c){
+  //console.log("change color B: ", c);
+  colors[1] = c;
+  console.log(colors);
 }
 
 function draw(){
@@ -170,13 +184,22 @@ function mousePressed(){
     drawing = true;
     startX = mouseX;
     startY = mouseY;
+    for(var i=0; i<menu.interfaceElements.length; i++){
+      if(menu.interfaceElements[i].visible == true){
+        //console.log(i);
+        menu.interfaceElements[i].visible = false;
+      }
+    }
   }
 }
 
 function mouseReleased(){
-  menu.mouseReleased();
-  drawing = false;
-  drawGradient(drawImg, colors, positions);
+  if(menu.isOver()){
+    menu.mouseReleased();
+  } else {
+    drawing = false;
+    drawGradient(drawImg, colors, positions);
+  }
 }
 
 function mouseMoved(){
