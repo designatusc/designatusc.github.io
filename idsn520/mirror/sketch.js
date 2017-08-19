@@ -4,6 +4,7 @@ var drawImg;
 var lineImg;
 var preImg;
 var lineWeight = 5;
+var drawMode = 0;
 var startX, startY;
 var endX, endY;
 var drawing = false;
@@ -30,6 +31,32 @@ function setup(){
   drawImg.background(255);
   menu = new Menu(gradient);
   menu.addButton(100, 50, 100, 30, "Save", saveImage);
+  menu.addSlider(300, 50, 200, 30, "Line Weight:", 1, 50, lineWeight, changeLineWeight);
+  var rb = menu.addRadioButtons(550, 50, "Drawing Mode:", changeDrawingMode)
+  rb.addButton(0, "Lines", true);
+  rb.addButton(1, "Free", false);
+  var rb2 = menu.addRadioButtons(700, 50, "End Cap Mode:", changeCapMode)
+  rb2.addButton(0, "Round", true);
+  rb2.addButton(1, "Square", false);
+}
+
+function changeCapMode(mode){
+  capMode = mode;
+  if(mode == 0){
+    strokeCap(ROUND);
+    lineImg.strokeCap(ROUND);
+  } else {
+    strokeCap(SQUARE);
+    lineImg.strokeCap(SQUARE);
+  }
+}
+
+function changeDrawingMode(mode){
+  drawMode = mode;
+}
+
+function changeLineWeight(size){
+  lineWeight = size;
 }
 
 function draw(){
@@ -53,7 +80,7 @@ function draw(){
     preImg.strokeWeight(lineWeight);
     endX = mouseX;
     endY = mouseY;
-    if(freedraw){
+    if(drawMode == 1){
       startX = pmouseX;
       startY = pmouseY;
       lineImg.stroke(0);
@@ -85,11 +112,13 @@ function draw(){
   }
 
   imageMode(CENTER);
+  push();
   translate(width/2, height/2);
   image(preImg, 0, 0, width, height);
   scale(-1,1);
   image(preImg, 0, 0, width, height);
   imageMode(CORNER);
+  pop();
   menu.draw();
 }
 
@@ -134,7 +163,7 @@ function mouseReleased(){
   drawing = false;
   //endX = mouseX;
   //endY = mouseY;
-  if(!freedraw){
+  if(drawMode == 0){
     lineImg.stroke(0);
     lineImg.strokeWeight(lineWeight);
     lineImg.line(startX, startY, endX, endY);
@@ -147,6 +176,14 @@ function mouseMoved(){
       menu.expand();
     } else {
       menu.contract();
+    }
+  }
+}
+
+function mouseDragged(){
+  if(menu != undefined){
+    if(mouseY > height - menu.height){
+      menu.mouseDragged();
     }
   }
 }
