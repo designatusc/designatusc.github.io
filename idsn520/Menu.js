@@ -434,6 +434,9 @@ function ColorSelection(x, y, w, h, callback){
   this.w = w;
   this.h = h;
   this.callback = callback;
+  this.cx = 0;
+  this.cy = 0;
+  this.c; // stores color object
   this.gradient = createGraphics(w, h);
   this.gradient.background(255);
   this.gradient.colorMode(HSB, w);
@@ -465,6 +468,13 @@ ColorSelection.prototype = {
       rect(this.x, this.y, this.w+40, this.h+40);
       imageMode(CENTER);
       image(this.gradient, this.x, this.y, this.w, this.h);
+      push();
+      translate(this.x - this.w/2, this.y - this.h/2);
+      stroke(0);
+      noFill();
+      strokeWeight(1);
+      ellipse(this.cx, this.cy, 20, 20);
+      pop();
     }
   },
 
@@ -481,25 +491,32 @@ ColorSelection.prototype = {
     return false;
   },
 
-  mousePressed:function(mx, my){
+  getColor:function(mx, my){
     // FIXME: kludge positioning solution
+    my -= 100;
+    this.cx = int(this.w/2 + (mx - this.x));
+    this.cy = int(this.h/2 + (my - this.y));
+    var cg = this.gradient.get(this.cx, this.cy);
+    this.c = color(cg[0], cg[1], cg[2], cg[3]);
+    this.callback(this.c);
+    this.cb.colorSelected(this.c);
+  },
+
+  mousePressed:function(mx, my){
     if(this.visible){
-      my -= 100;
-      var cx = int(this.w/2 + (mx - this.x));
-      var cy = int(this.h/2 + (my - this.y));
-      //console.log(cx, cy);
-      var c = this.gradient.get(cx, cy);
-      var newc = color(c[0], c[1], c[2], c[3]);
-      this.callback(newc);
-      this.cb.colorSelected(newc);
+      this.getColor(mx, my);
     }
   },
 
   mouseReleased:function(mx, my){
-    // does nothing
+    if(this.visible){
+      this.getColor(mx, my);
+    }
   },
 
   mouseDragged:function(mx, my){
-    // does nothing
+    if(this.visible){
+      this.getColor(mx, my);
+    }
   }
 }
