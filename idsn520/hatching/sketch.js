@@ -33,6 +33,29 @@ function setup(){
   preImg = createGraphics(width, height);
   drawImg.background(255);
   menu = new Menu(gradient);
+  menu.addButton(100, 50, 100, 30, "Save", saveImage);
+  menu.addSlider(300, 30, 200, 30, "Line Weight:", 0, 5, lineWeight, changeLineWeight);
+  menu.addSlider(300, 70, 200, 30, "# of Hatches:", 2, 20, hatchNum, changeHatchNum);
+  menu.addSlider(700, 30, 200, 30, "Hatch Width:", 10, 200, hatchWidth, changeHatchWidth);
+  menu.addSlider(700, 70, 200, 30, "Hatch Angle:", 0, 360, degrees(angle), changeAngle);
+}
+
+function changeAngle(a){
+  angle = radians(float(a));
+}
+
+function changeHatchNum(size){
+  hatchNum = int(size);
+  hatchSpacing = hatchWidth / hatchNum;
+}
+
+function changeHatchWidth(size){
+  hatchWidth = float(size);
+  hatchSpacing = hatchWidth / hatchNum;
+}
+
+function changeLineWeight(size){
+  lineWeight = float(size);
 }
 
 function draw(){
@@ -183,6 +206,12 @@ function mouseMoved(){
     } else {
       menu.contract();
     }
+  }
+}
+
+function mouseDragged(){
+  if(menu.isOver()){
+    menu.mouseDragged();
   }
 }
 
