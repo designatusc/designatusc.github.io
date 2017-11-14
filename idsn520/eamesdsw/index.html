@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Eames Chair DSW</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
+		<title>Eames Chair DSW</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../tool.css" />
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon.ico" type="image/x-icon">
+        
+        <style>
 			body {
 				background-color: #000;
 				color: #fff;
@@ -13,15 +17,15 @@
 			}
 
 		</style>
-	</head>
-
-	<body>
 
 		<script src="../three.min.js"></script>
 		<script src="../DDSLoader.js"></script>
 		<script src="../MTLLoader.js"></script>
 		<script src="../OBJLoader.js"></script>
 		<script src="../Detector.js"></script>
+	</head>
+
+	<body>
 
 		<script>
 
@@ -59,12 +63,6 @@
 				scene.add( directionalLight );
 
 				scene.add(camera);
-
-				// var manager = new THREE.LoadingManager();
-				// manager.onProgress = function ( item, loaded, total ) {
-				// 	console.log( item, loaded, total );
-				// };
-
 
 				// MODEL
 
@@ -154,13 +152,31 @@
 			}
 
 			function render() {
-				// camera.position.x += ( mouseX - camera.position.x ) * .05;
-				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				camera.lookAt( scene.position );
 				renderer.render( scene, camera );
 			}
 
 		</script>
+
+
+
+		<div id="sketch">
+        </div>
+
+        <header class="noselect">
+          <div id="logo">
+            <a href="https://design.usc.edu">
+              <img src="../star.png" alt="Design@USC">
+              <div id="logotext">Design@USC</div>
+            </a>
+          </div>
+          <div id="title">
+            Eames DSW (1950)
+          </div>
+          <div id="classname">
+            Design Essentials
+          </div>
+        </header>
 
 	</body>
 </html>
