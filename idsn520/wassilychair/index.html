@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Wassily Chair - Marcel Breuer (1925)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../tool.css" />
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon.ico" type="image/x-icon">
+        
+        <style>
+			body {
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+		</style>
+
+		<script src="../three.min.js"></script>
+		<script src="../DDSLoader.js"></script>
+		<script src="../MTLLoader.js"></script>
+		<script src="../OBJLoader.js"></script>
+		<script src="../Detector.js"></script>
+	</head>
+
+	<body>
+
+		<script>
+
+			var container;
+			var camera, scene, renderer;
+			var obj;
+			var mouseX = 0, mouseY = 0;
+			var pmouseX = mouseX;
+			var pmouseY = mouseY;
+			var mouseDown = false;
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+
+
+			init();
+			animate();
+
+
+			function init() {
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.z = 10;
+
+				// SCENE
+
+				scene = new THREE.Scene();
+
+				var ambient = new THREE.AmbientLight( 0xffffff );
+				scene.add( ambient );
+
+				var directionalLight = new THREE.DirectionalLight( 0xffffff );
+				directionalLight.position.set( 0, 0, 1 ).normalize();
+				scene.add( directionalLight );
+
+				scene.add(camera);
+
+				// MODEL
+
+				var onProgress = function ( xhr ) {
+					if ( xhr.lengthComputable ) {
+						var percentComplete = xhr.loaded / xhr.total * 100;
+						console.log( Math.round(percentComplete, 2) + '% downloaded' );
+					}
+				};
+
+				var onError = function ( xhr ) { };
+
+				THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+
+				var mtlLoader = new THREE.MTLLoader();
+				mtlLoader.load( 'wassilyChair.mtl', function( materials ) {
+
+					materials.preload();
+
+					var objLoader = new THREE.OBJLoader();
+					objLoader.setMaterials( materials );
+					objLoader.load( 'wassilyChair.obj', function ( object ) {
+
+						object.position.y = -1;
+						object.scale.x = object.scale.y = object.scale.z = 5;
+						obj = object;
+						scene.add( object );
+
+					}, onProgress, onError );
+
+				});
+
+
+				// RENDERER
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'touchstart', onDocumentMouseDown, false );
+				document.addEventListener( 'touchend', onDocumentMouseUp, false );
+				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
+				document.addEventListener( 'wheel', onDocumentMouseWheel, false );
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+
+			function onWindowResize() {
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+
+			function onDocumentMouseDown( event ) {
+				mouseDown = true;
+			}
+
+			function onDocumentMouseUp( event ) {
+				mouseDown = false;
+			}
+
+			function onDocumentMouseMove( event ) {
+				pmouseX = mouseX;
+				pmouseY = mouseY;
+				mouseX = ( event.clientX - windowHalfX ) / 2;
+				mouseY = ( event.clientY - windowHalfY ) / 2;
+
+				if(mouseDown){
+					// flip the axis
+					obj.rotation.y += (mouseX - pmouseX) * 0.01;
+					obj.rotation.x += (mouseY - pmouseY) * 0.01;
+				}
+			}
+
+			function onDocumentMouseWheel( event ) {
+				obj.scale.x += (event.deltaY * 0.001);
+				obj.scale.y += event.deltaY * 0.001;
+				obj.scale.z += event.deltaY * 0.001;
+			}
+
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+			}
+
+			function render() {
+				camera.lookAt( scene.position );
+				renderer.render( scene, camera );
+			}
+
+		</script>
+
+
+        <header class="noselect">
+          <div id="logo">
+            <a href="https://design.usc.edu">
+              <img src="../star.png" alt="Design@USC">
+              <div id="logotext">Design@USC</div>
+            </a>
+          </div>
+          <div id="title">
+            Wassily Chair - Marcel Breuer (1925)
+          </div>
+          <div id="classname">
+            Design Essentials
+          </div>
+        </header>
+
+	</body>
+</html>

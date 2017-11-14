@@ -1,0 +1,65 @@
+# Blender MTL File: 'wassilyChair.blend'
+# Material Count: 6
+
+newmtl wassilyChrome
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.066825 0.066825 0.066825
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd scratches10.jpg
+map_Bump scratches10.jpg
+
+newmtl wassilyChromeBolt
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.066825 0.066825 0.066825
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd scratches10.jpg
+
+newmtl wassilyLeather
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.147575 0.147575 0.147575
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd wassilyLeatherSeam.jpg
+map_Bump wassilyLeatherSeam.jpg
+
+newmtl wassilyLeatherBord
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.152142 0.152142 0.152142
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Leather0002_2_L2.jpg
+
+newmtl wassilyPlastic
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.343380 0.343380 0.343380
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd scratches10.jpg
+
+newmtl wassilySeatLeather
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.106291 0.106291 0.106291
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd wassilyLeatherSeatSeam.jpg
+map_Bump wassilyLeatherSeatSeam.jpg
