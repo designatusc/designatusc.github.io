@@ -18,13 +18,20 @@
 	<body>
 
 		<script src="../three.min.js"></script>
+		<script src="../DDSLoader.js"></script>
+		<script src="../MTLLoader.js"></script>
 		<script src="../OBJLoader.js"></script>
+		<script src="../Detector.js"></script>
 
 		<script>
 
 			var container;
 			var camera, scene, renderer;
+			var chair;
 			var mouseX = 0, mouseY = 0;
+			var pmouseX = mouseX;
+			var pmouseY = mouseY;
+			var mouseDown = false;
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 
@@ -48,21 +55,18 @@
 				scene.add( ambient );
 
 				var directionalLight = new THREE.DirectionalLight( 0xffffff );
-				directionalLight.position.set( 0, 0, 1 );
+				directionalLight.position.set( 0, 0, 1 ).normalize();
 				scene.add( directionalLight );
 
-				// var light = new THREE.PointLight( 0xffffff, 5, 500 );
-				// light.position.set(0,50,50);
-				// scene.add( light );
+				scene.add(camera);
 
-				// TEXTURE
+				// var manager = new THREE.LoadingManager();
+				// manager.onProgress = function ( item, loaded, total ) {
+				// 	console.log( item, loaded, total );
+				// };
 
-				var manager = new THREE.LoadingManager();
-				manager.onProgress = function ( item, loaded, total ) {
-					console.log( item, loaded, total );
-				};
 
-				var texture = new THREE.Texture();
+				// MODEL
 
 				var onProgress = function ( xhr ) {
 					if ( xhr.lengthComputable ) {
@@ -71,37 +75,41 @@
 					}
 				};
 
-				var onError = function ( xhr ) {
-				};
+				var onError = function ( xhr ) { };
+
+				THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
+
+				var mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setPath( 'textures/' );
+				mtlLoader.load( 'eamesdsw.mtl', function( materials ) {
+
+					materials.preload();
+
+					var objLoader = new THREE.OBJLoader();
+					objLoader.setMaterials( materials );
+					objLoader.setPath( 'textures/' );
+					objLoader.load( 'eamesdsw.obj', function ( object ) {
+
+						object.position.y = -50;
+						chair = object;
+						scene.add( object );
+
+					}, onProgress, onError );
+
+				});
 
 
-				var loader = new THREE.ImageLoader( manager );
-				loader.load( 'UV_Grid_Sm.jpg', function ( image ) {
-					texture.image = image;
-					texture.needsUpdate = true;
-				} );
-
-				// MODEL
-
-				var loader = new THREE.OBJLoader( manager );
-				loader.load( 'eames_chair_dsw.obj', function ( object ) {
-					object.traverse( function ( child ) {
-						if ( child instanceof THREE.Mesh ) {
-							child.material.map = texture;
-						}
-					} );
-					object.position.y = - 50;
-					scene.add( object );
-				}, onProgress, onError );
-
-				//
+				// RENDERER
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'wheel', onDocumentMouseWheel, false );
 				window.addEventListener( 'resize', onWindowResize, false );
 			}
 
@@ -113,9 +121,31 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 
+			function onDocumentMouseDown( event ) {
+				mouseDown = true;
+			}
+
+			function onDocumentMouseUp( event ) {
+				mouseDown = false;
+			}
+
 			function onDocumentMouseMove( event ) {
+				pmouseX = mouseX;
+				pmouseY = mouseY;
 				mouseX = ( event.clientX - windowHalfX ) / 2;
 				mouseY = ( event.clientY - windowHalfY ) / 2;
+
+				if(mouseDown){
+					// flip the axis
+					chair.rotation.y += (mouseX - pmouseX) * 0.01;
+					chair.rotation.x += (mouseY - pmouseY) * 0.01;
+				}
+			}
+
+			function onDocumentMouseWheel( event ) {
+				chair.scale.x += (event.deltaY * 0.001);
+				chair.scale.y += event.deltaY * 0.001;
+				chair.scale.z += event.deltaY * 0.001;
 			}
 
 			function animate() {
@@ -124,8 +154,8 @@
 			}
 
 			function render() {
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				// camera.position.x += ( mouseX - camera.position.x ) * .05;
+				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
 				camera.lookAt( scene.position );
 				renderer.render( scene, camera );
 			}
