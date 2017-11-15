@@ -23,6 +23,7 @@
 		<script src="../MTLLoader.js"></script>
 		<script src="../OBJLoader.js"></script>
 		<script src="../Detector.js"></script>
+		<script src="../OrbitControls.js"></script>
 	</head>
 
 	<body>
@@ -30,6 +31,7 @@
 		<script>
 
 			var container;
+			var controls;
 			var camera, scene, renderer;
 			var obj;
 			var mouseX = 0, mouseY = 0;
@@ -49,7 +51,10 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.z = 10;
+				//camera.position.z = 10;
+				camera.position.z = 30;
+				controls = new THREE.OrbitControls( camera );
+				controls.addEventListener( 'change', render );
 
 				// SCENE
 
@@ -78,22 +83,28 @@
 				THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
 
 				var mtlLoader = new THREE.MTLLoader();
-				mtlLoader.load( 'wassilyChair.mtl', function( materials ) {
+				mtlLoader.load( 'wassily.mtl', function( materials ) {
 
 					materials.preload();
 
 					var objLoader = new THREE.OBJLoader();
 					objLoader.setMaterials( materials );
-					objLoader.load( 'wassilyChair.obj', function ( object ) {
+					objLoader.load( 'wassily.obj', function ( object ) {
 
-						object.position.y = -1;
-						object.scale.x = object.scale.y = object.scale.z = 5;
+						object.position.y = -5;
 						obj = object;
 						scene.add( object );
 
 					}, onProgress, onError );
 
 				});
+
+				// add a floor or something
+				var geometry = new THREE.BoxGeometry( 10, 1, 10 );
+				var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+				var cube = new THREE.Mesh( geometry, material );
+				cube.position.y = -5.5;
+				scene.add( cube );
 
 
 				// RENDERER
@@ -103,13 +114,6 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'touchstart', onDocumentMouseDown, false );
-				document.addEventListener( 'touchend', onDocumentMouseUp, false );
-				document.addEventListener( 'touchmove', onDocumentMouseMove, false );
-				document.addEventListener( 'wheel', onDocumentMouseWheel, false );
 				window.addEventListener( 'resize', onWindowResize, false );
 			}
 
@@ -121,40 +125,14 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 
-			function onDocumentMouseDown( event ) {
-				mouseDown = true;
-			}
-
-			function onDocumentMouseUp( event ) {
-				mouseDown = false;
-			}
-
-			function onDocumentMouseMove( event ) {
-				pmouseX = mouseX;
-				pmouseY = mouseY;
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
-
-				if(mouseDown){
-					// flip the axis
-					obj.rotation.y += (mouseX - pmouseX) * 0.01;
-					obj.rotation.x += (mouseY - pmouseY) * 0.01;
-				}
-			}
-
-			function onDocumentMouseWheel( event ) {
-				obj.scale.x += (event.deltaY * 0.001);
-				obj.scale.y += event.deltaY * 0.001;
-				obj.scale.z += event.deltaY * 0.001;
-			}
 
 			function animate() {
 				requestAnimationFrame( animate );
+				controls.update();
 				render();
 			}
 
 			function render() {
-				camera.lookAt( scene.position );
 				renderer.render( scene, camera );
 			}
 
