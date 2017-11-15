@@ -1,0 +1,59 @@
+newmtl wassilyChair:wassilyChrome
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd scratches10.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+
+newmtl wassilyChair:wassilyChromeBolt
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd scratches10.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+
+newmtl wassilyChair:wassilyLeather
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wassilyLeatherSeam.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+
+newmtl wassilyChair:wassilyLeatherBord
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Leather0002_2_L2.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+
+newmtl wassilyChair:wassilyPlastic
+illum 4
+Kd 0.10 0.10 0.10
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd scratches10.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+
+newmtl wassilyChair:wassilySeatLeather
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wassilyLeatherSeatSeam.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
