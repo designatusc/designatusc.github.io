@@ -1,4 +1,3 @@
-var pg;
 var circles = []
 var circle;
 var rectangles = [];
@@ -13,13 +12,6 @@ function setup(){
   var canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("sketch");
   frameRate(60);
-
-  var size = sqrt(sq(width) + sq(height));
-  pg = createGraphics(size, size)
-  pg.stroke(0);
-  for(var x=0; x<pg.width; x+=5){
-    pg.line(x, 0, x, pg.height);
-  }
 }
 
 
