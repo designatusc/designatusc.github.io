@@ -1,8 +1,6 @@
 var circles = [];
 var circle;
 var sparkles = [];
-var pressTime;
-var clickDelay = 200;
 var colors = [];
 
 
@@ -19,6 +17,7 @@ function setup(){
   colors.push(color(0,255,0));
   colors.push(color(0,255,255));
   colors.push(color(0,0,255));
+  colors.push(color(255,0,255));
 }
 
 
@@ -32,7 +31,11 @@ function draw(){
     line(touches[i].x, touches[i].y, touches[i-1].x, touches[i-1].y);
   }
   for(var i=0; i<touches.length; i++){
-    fill(colors[i]);
+    var c = i;
+    if(i >= colors.length){
+      c = c % colors.length;
+    }
+    fill(colors[c]);
     ellipse(touches[i].x, touches[i].y, 100, 100);
   }
 
@@ -44,19 +47,19 @@ function draw(){
   //   }
   // }
   //
-  // for(var i=sparkles.length-1; i>=0; i--){
-  //   sparkles[i].draw();
-  //   if(sparkles[i].dead){
-  //     sparkles.splice(i,1);
-  //   }
-  // }
+  for(var i=sparkles.length-1; i>=0; i--){
+    sparkles[i].draw();
+    if(sparkles[i].dead){
+      sparkles.splice(i,1);
+    }
+  }
 }
 
 
 
 
 function touchStarted(){
-
+  sparkles.push(new Sparkle(mouseX, mouseY));
 }
 
 function touchEnded(){
@@ -65,32 +68,6 @@ function touchEnded(){
 
 function touchMoved(){
 
-}
-
-function mousePressed(){
-  // circle = new Circle(mouseX, mouseY);
-  // circles.push(circle);
-  // pressTime = millis();
-}
-
-function mouseReleased(){
-  // circle.expanding = false;
-  // circle.contracting = true;
-}
-
-function mouseClicked(){
-  // sprite shit
-  // if(millis() - pressTime < clickDelay){
-  //   sparkles.push(new Sparkle(mouseX, mouseY));
-  // }
-}
-
-function mouseWheel(event){
-  // if(event.delta > 0){
-  //   rectangles.push(new Rectangle(true));
-  // } else {
-  //   rectangles.push(new Rectangle(false));
-  // }
 }
 
 function windowResized(){
