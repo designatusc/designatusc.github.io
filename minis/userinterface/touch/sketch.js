@@ -59,11 +59,11 @@ function draw(){
 
 
 function touchStarted(){
-  sparkles.push(new Sparkle(mouseX, mouseY));
+
 }
 
 function touchEnded(){
-
+  sparkles.push(new Sparkle(mouseX, mouseY));
 }
 
 function touchMoved(){
