@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>6.1.1 - Introduction to User Engagement</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/designatusc.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- header and footer stays on page and changes when tweaked by <style> inside each <section> -->
+				<header>
+					<span class="left"><img src="img/logo.png" class="logo"></span>
+					<!-- <span class="right">USC Jimmy Iovine and Andre Young Academy</span> -->
+				</header>
+
+				<footer>
+					<span id="leftside" class="left"></span>
+					<span id="rightside" class="right"></span>
+				</footer>
+
+				<section data-background="img/intro.png" data-background-size="contain">
+					<div class="titletext">
+						<h1>Introduction to<br/>User Engagement</h1>
+						<br/>
+						<span style="font-size:0.8em">Aaron Siegel<br/>
+						Assistant Professor of Design</span>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Notifications.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Activity Alerts.</h4>
+							<br/>
+							Notifications that alert that user about activity that is occurring within the system that they are not yet aware of.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Enticement.</h4>
+							<br/>
+							Notifications designed to entice the user to return to the application in order to further engage with the system.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>FOMO.</h4>
+							<br/>
+							Notifications are often designed to heighten the user's sensation of the fear of missing out when they are not actively engaged with the system.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Gamification.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Incentives.</h4>
+							<br/>
+							Incentives are a mechanism for rewarding a level of engagement from the user.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Achievements.</h4>
+							<br/>
+							Achievements are a simulated reward for participatory activities that the user has been involved in.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Competition.</h4>
+							<br/>
+							Competition is a context in which people's individual performance can be placed in order to challenge them to engage with the system at a higher level.
+						</div>
+					</div>
+				</section>
+
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+				width: 1920,
+		    height: 1080,
+		    margin: 0.1,
+		    minScale: 0.2,
+		    maxScale: 2.0,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>5.1.1 - Introduction to Interactions</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/designatusc.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- header and footer stays on page and changes when tweaked by <style> inside each <section> -->
+				<header>
+					<span class="left"><img src="img/logo.png" class="logo"></span>
+					<!-- <span class="right">USC Jimmy Iovine and Andre Young Academy</span> -->
+				</header>
+
+				<footer>
+					<span id="leftside" class="left"></span>
+					<span id="rightside" class="right"></span>
+				</footer>
+
+				<section data-background="img/intro.png" data-background-size="contain">
+					<div class="titletext">
+						<h1>Introduction to<br/>Interactions</h1>
+						<br/>
+						<span style="font-size:0.8em">Aaron Siegel<br/>
+						Assistant Professor of Design</span>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Reactive Elements.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Action/Reaction.</h4>
+							<br/>
+							A visual response to user activity ensures that the user is aware of the effect they are having on the interface and underlying system.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Input/Response.</h4>
+							<br/>
+							When a system receives new input, that change is reflected in the interface in order to provide an informative response to the user.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Latency of Experience.</h4>
+							<br/>
+							The lower the latency of the interface experience, the more closely connected the user feels with the underlying system.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Motion Graphics.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Aesthetics of Motion.</h4>
+							<br/>
+							The way graphic elements change their visual properties over time determines a specific aesthetic quality for the interface.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Event Response.</h4>
+							<br/>
+							Reacting to events and transitioning between different states of behavior helps communicate the currently functioning state of the system.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Visual Language.</h4>
+							<br/>
+							Animations and transitions of visual elements are a visual language of their own that the interface designer must determine to most effective communicate to the user.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Science Fiction Interface Design.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Speculative Interfaces.</h4>
+							<br/>
+							Creators of science fiction have had the freedom to explore different approaches to interface without being concerned with how they are engineered.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Fictional Functionality.</h4>
+							<br/>
+							Many science fiction interfaces are designed around a fictional functionality, often as a component of the storyline or the system that the interface is a part of.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Advancements in Technology.</h4>
+							<br/>
+							Science fiction usually projects a great deal of technological advancement which accommodates a more unconventional and innovative interface experience.
+						</div>
+					</div>
+				</section>
+
+
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+				width: 1920,
+		    height: 1080,
+		    margin: 0.1,
+		    minScale: 0.2,
+		    maxScale: 2.0,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>2.1.1 - Introduction to Hypermedia</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/designatusc.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- header and footer stays on page and changes when tweaked by <style> inside each <section> -->
+				<header>
+					<span class="left"><img src="img/logo.png" class="logo"></span>
+					<!-- <span class="right">USC Jimmy Iovine and Andre Young Academy</span> -->
+				</header>
+
+				<footer>
+					<span id="leftside" class="left"></span>
+					<span id="rightside" class="right"></span>
+				</footer>
+
+				<section data-background="img/intro.png" data-background-size="contain">
+					<div class="titletext">
+						<h1>Introduction to<br/>Hypermedia</h1>
+						<br/>
+						<span style="font-size:0.8em">Aaron Siegel<br/>
+						Assistant Professor of Design</span>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">What is Hypermedia?</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Multimedia.</h4>
+							<br/>
+							Multimedia is a mixture of varying types of communicative mediums ranging from text to illustration, audio to video.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Nonlinearity.</h4>
+							<br/>
+							Nonlinearity deals with the way a user consumes content over a period of time and in what order that content is consumed.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Navigation.</h4>
+							<br/>
+							Hypermedia enables users to navigate across a variety of media related to a specific subject matter using hyperlinks.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Nonlinearity.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Links Between Content.</h4>
+							<br/>
+							Hyperlinks are the connective tissue tying hypermedia content together, allowing users to jump between media types and tangentially related subjects.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Associations Across Media.</h4>
+							<br/>
+							Hyperlinks can be created to tie together different types of media that share a common subject matter.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Order of Consumption.</h4>
+							<br/>
+							As the user has the freedom to navigate across the content in a nonlinear fashion, they get to choose the order in which they consume it.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Navigating Content.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>User Navigation Choices.</h4>
+							<br/>
+							The user's ability to navigate through the content on their own achord affords them the ability to dive into or ignore particular bits of material.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Breadth vs. Depth.</h4>
+							<br/>
+							Navigating through hypermedia can provide the user with the ability to go in depth in their subject matter or acquire a wider breadth of knowledge related to it.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Media Preference.</h4>
+							<br/>
+							Since hypermedia allows for a variety of different media formats, the user can select to peruse the format they find most effective for learning about the subject.
+						</div>
+					</div>
+				</section>
+
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+				width: 1920,
+		    height: 1080,
+		    margin: 0.1,
+		    minScale: 0.2,
+		    maxScale: 2.0,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
