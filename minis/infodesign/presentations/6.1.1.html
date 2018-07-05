@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>6.1.1 - Introduction to Methods and Techniques for Creating Graphics</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/designatusc.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- header and footer stays on page and changes when tweaked by <style> inside each <section> -->
+				<header>
+					<span class="left"><img src="img/logo.png" class="logo"></span>
+					<!-- <span class="right">USC Jimmy Iovine and Andre Young Academy</span> -->
+				</header>
+
+				<footer>
+					<span id="leftside" class="left"></span>
+					<span id="rightside" class="right"></span>
+				</footer>
+
+				<section data-background="img/intro.png" data-background-size="contain">
+					<div class="titletext">
+						<h1>Introduction to Methods and<br/>Techniques for Creating Graphics</h1>
+						<br/>
+						<span style="font-size:0.8em">Aaron Siegel<br/>
+						Assistant Professor of Design</span>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Understanding Your Data.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Epistomology.</h4>
+							<br/>
+							Understanding and identifying the differences between data, information, knowledge, and wisdom and how these are acquired.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Data Qualities.</h4>
+							<br/>
+							Data is ubiquitous, diverse, and important to understand in order to make more informed decisions about the future.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Evaluating Data.</h4>
+							<br/>
+							Data must be assessed for its component properties and how those components can be used to make comparisons which can be presented as particular perspectives into the subject matter.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Managing Your Data.</h2>
+					<br/>
+					<div class="contentrow left">
+						<ul>
+							<li class="fragment fade-left"><h4>Acquiring.</h4></li>
+							<li class="fragment fade-left"><h4>Cleaning.</h4></li>
+							<li class="fragment fade-left"><h4>Modeling.</h4></li>
+							<li class="fragment fade-left"><h4>Storing.</h4></li>
+							<li class="fragment fade-left"><h4>Analyzing.</h4></li>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Analog Rendering Methods.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Sketching.</h4>
+							<br/>
+							The initial visual explorations of the potential forms that a data set can take in order to communicate a perspective to the intended audiences.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Drafting.</h4>
+							<br/>
+							A more precise way of illustrating the graphic elements required to effectively communicate the underlying subject matter.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Printing.</h4>
+							<br/>
+							A means of reproducing visual designs by transfering the imagery to a printing process such as lithography or engraving.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Digital Rendering Methods.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Illustration Software.</h4>
+							<br/>
+							Digital illustration software affords the designer many tools intended to simulate the effects of traditional illustrative tools, offering greater control and a more intuitive approach.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Statistical Analysis Software.</h4>
+							<br/>
+							Data management software provides a number of utilities for running analysis and exporting simple visualizations of underlying data.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Data Visualization Software.</h4>
+							<br/>
+							Data visualization software specifically intended to produce elegant visual results of information, often alleviates much of the design work.
+						</div>
+					</div>
+				</section>
+
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+				width: 1920,
+		    height: 1080,
+		    margin: 0.1,
+		    minScale: 0.2,
+		    maxScale: 2.0,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>

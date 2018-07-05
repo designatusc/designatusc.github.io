@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>4.1.1 - Introduction to Visual Language</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/designatusc.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- header and footer stays on page and changes when tweaked by <style> inside each <section> -->
+				<header>
+					<span class="left"><img src="img/logo.png" class="logo"></span>
+					<!-- <span class="right">USC Jimmy Iovine and Andre Young Academy</span> -->
+				</header>
+
+				<footer>
+					<span id="leftside" class="left"></span>
+					<span id="rightside" class="right"></span>
+				</footer>
+
+				<section data-background="img/intro.png" data-background-size="contain">
+					<div class="titletext">
+						<h1>Introduction to<br/>Improving Graphics</h1>
+						<br/>
+						<span style="font-size:0.8em">Aaron Siegel<br/>
+						Assistant Professor of Design</span>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Optimizing Graphics.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Objectively Best Display.</h4>
+							<br/>
+							What is the objectively best method of displaying this data?
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Efficiency of Representation.</h4>
+							<br/>
+							How efficiently can I represent this data?
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Maximum Legibility.</h4>
+							<br/>
+							How legible can I make this representation?
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Identifying Misrepresentation.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left" style="width:36.5%;">
+							<h4>Unintentional.</h4>
+							<br/>
+							Poor design decisions, inadequate choices for visual representation, and obfuscation through decoration and clutter.
+						</div>
+						<div class="contenttab fragment fade-left" style="width:36.5%;">
+							<h4>Intentional.</h4>
+							<br/>
+							Selective sampling, axis manipulation, range cropping, and other techniques can be used to create intentionally bias graphics to support an agenda.
+						</div>
+					</div>
+				</section>
+
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+				width: 1920,
+		    height: 1080,
+		    margin: 0.1,
+		    minScale: 0.2,
+		    maxScale: 2.0,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>

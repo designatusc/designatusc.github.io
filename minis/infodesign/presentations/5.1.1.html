@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>5.1.1 - Introduction to Visual Language</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/designatusc.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- header and footer stays on page and changes when tweaked by <style> inside each <section> -->
+				<header>
+					<span class="left"><img src="img/logo.png" class="logo"></span>
+					<!-- <span class="right">USC Jimmy Iovine and Andre Young Academy</span> -->
+				</header>
+
+				<footer>
+					<span id="leftside" class="left"></span>
+					<span id="rightside" class="right"></span>
+				</footer>
+
+				<section data-background="img/intro.png" data-background-size="contain">
+					<div class="titletext">
+						<h1>Introduction to the<br/>Information Graphic Reference</h1>
+						<br/>
+						<span style="font-size:0.8em">Aaron Siegel<br/>
+						Assistant Professor of Design</span>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">How to most effectively use the reference.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Chronological.</h4>
+							<br/>
+							Organize information design projects based on their date of creation in order to reflect on the historical conditions during their production.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Visual Forms.</h4>
+							<br/>
+							Analyze the visual organizational forms used for communicating the different subjects and how they effectively tell the viewer a story.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Rendering Methods.</h4>
+							<br/>
+							Group representations based on the means and technologies that were used to create them.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Classic Infographics.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Traditional Rendering Methods.</h4>
+							<br/>
+							Sketching, illustration, drafting, woodcutting, lithography, process printing.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Pre-computational Analysis.</h4>
+							<br/>
+							Data needed to be acquired, managed, and analyzed on paper requiring much of the mental lifting to be done by humans.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Limited Complexity.</h4>
+							<br/>
+							Difficulties in data acquisition and analysis meant that the level of complexity of the subject matter being analyzed was limited.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Cartography.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Spatial Representation.</h4>
+							<br/>
+							Attempting to create an abstraction of our real-world experience.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Utility for Wayfinding.</h4>
+							<br/>
+							Maps are tools used for getting from A to B and become situationally specific in the context in which people use them.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Importance of Scale.</h4>
+							<br/>
+							Resolution of details in the topography are determined by the level of scale being represented by the map.
+						</div>
+					</div>
+				</section>
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+					<h2 style="width:75%;">Contemporary Infographics.</h2>
+					<br/>
+					<div class="contentrow">
+						<div class="contenttab fragment fade-left">
+							<h4>Rendered on Computer.</h4>
+							<br/>
+							Custom software is used to render visual representations of data in raster or vector format to be used for display on screen or print.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Data Software Management.</h4>
+							<br/>
+							Databases and spreadsheets can be used as management infrastructure to help handle the large amounts of data for analysis and rendering.
+						</div>
+						<div class="contenttab fragment fade-left">
+							<h4>Capacity for Interaction.</h4>
+							<br/>
+							The ability to render data to screen repeatedly allows the functionality of interacting with the data representation through a user interface.
+						</div>
+					</div>
+				</section>
+
+
+				<section data-background="img/gradientbg.png" data-background-size="contain">
+				</section>
+
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+				width: 1920,
+		    height: 1080,
+		    margin: 0.1,
+		    minScale: 0.2,
+		    maxScale: 2.0,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
