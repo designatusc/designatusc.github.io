@@ -1,5 +1,7 @@
 let balls = [];
 let gravity;
+let lastball = 0;
+let delay = 200;
 
 function setup(){
   var canvas = createCanvas(windowWidth, windowHeight);
@@ -28,7 +30,10 @@ function draw(){
 }
 
 function mousePressed(){
-  balls.push(new Ball());
+  if(millis() - lastball > delay){
+    balls.push(new Ball());
+    lastball = millis();
+  }
 }
 
 function windowResized(){
