@@ -71,6 +71,6 @@ class Ball{
     }
 
     // add damping to vectors to make them slow over time.
-    this.vec.mult(0.95);
+    this.vec.mult(0.98);
   }
 }
