@@ -20,6 +20,10 @@ function draw(){
   gravity.z = map(rotationZ, 0, 180, 0, 1);
   gravity.x = map(rotationX, 0, 180, 0, 1);
   gravity.y = map(rotationY, 0, 180, 0, 1);
+
+  text("x: " + gravity.x, 20, 50);
+  text("y: " + gravity.y, 20, 80);
+  text("z: " + gravity.z, 20, 110);
 }
 
 function mousePressed(){
