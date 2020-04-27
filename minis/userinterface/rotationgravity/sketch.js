@@ -69,5 +69,8 @@ class Ball{
       this.pos.y = height-this.r;
       this.vec.y *= -1;
     }
+
+    // add damping to vectors to make them slow over time.
+    this.vec.mult(0.95);
   }
 }
