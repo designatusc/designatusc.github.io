@@ -18,9 +18,10 @@ function draw(){
 
   // read the rotation values in a specific order
   gravity.z = map(rotationZ, 0, 180, 0, 1);
-  gravity.x = map(rotationX, 0, 180, 0, 1);
-  gravity.y = map(rotationY, 0, 180, 0, 1);
+  gravity.x = map(rotationY, 0, 180, 0, 1);
+  gravity.y = map(rotationX, 0, 180, 0, 1);
 
+  fill(255);
   text("x: " + gravity.x, 20, 50);
   text("y: " + gravity.y, 20, 80);
   text("z: " + gravity.z, 20, 110);
@@ -46,6 +47,7 @@ class Ball{
   }
 
   display(){
+    fill(this.c);
     circle(this.pos.x, this.pos.y, this.d);
     this.pos.add(this.vec); // add vector to position
     this.vec.add(gravity);  // add gravity to vector
