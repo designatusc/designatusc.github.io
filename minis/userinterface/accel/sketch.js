@@ -1,3 +1,5 @@
+let r, g, b;
+
 function setup(){
   var canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("sketch");
@@ -7,10 +9,13 @@ function setup(){
 }
 
 function draw(){
-  background(accelerationX*25, accelerationY*25, accelerationZ*25);
-  text("x: " + accelerationX, 50, 50);
-  text("y: " + accelerationY, 50, 80);
-  text("z: " + accelerationZ, 50, 110);
+  r = int(accelerationX*25);
+  g = int(accelerationY*25);
+  b = int(accelerationZ*25);
+  background(r, g, b);
+  text("x: " + r, 20, 50);
+  text("y: " + g, 20, 80);
+  text("z: " + b, 20, 110);
 }
 
 function windowResized(){
