@@ -4,6 +4,8 @@ function setup(){
   var canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("sketch");
   frameRate(60);
+  stroke(255);
+  strokeWeight(5);
 
   colors.push(color(255,0,0));
   colors.push(color(255,255,0));
@@ -13,12 +15,8 @@ function setup(){
   colors.push(color(255,0,255));
 }
 
-
 function draw(){
-  colorMode(HSB);
   background(0);
-  stroke(255);
-  strokeWeight(5);
 
   for(var i=1; i<touches.length; i++){
     line(touches[i].x, touches[i].y, touches[i-1].x, touches[i-1].y);
