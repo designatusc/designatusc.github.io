@@ -9,9 +9,9 @@ function setup(){
 }
 
 function draw(){
+  b = int(rotationZ);
   r = int(rotationX);
   g = int(rotationY);
-  b = int(rotationZ);
   background(r, g, b);
   text("x: " + r, 20, 50);
   text("y: " + g, 20, 80);
