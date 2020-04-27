@@ -7,7 +7,7 @@ function setup(){
 }
 
 function draw(){
-  background(accelerationX, accelerationY, accelerationZ);
+  background(accelerationX*25, accelerationY*25, accelerationZ*25);
   text("x: " + accelerationX, 50, 50);
   text("y: " + accelerationY, 50, 80);
   text("z: " + accelerationZ, 50, 110);
