@@ -25,7 +25,7 @@ function setup(){
   textSize(18);
   noStroke();
   background(255);
-  menu = new Menu();
+  menu = new Menu(gradient);
   menu.addButton(100, 50, 100, 30, "Save", saveImage);
 }
 
@@ -133,79 +133,79 @@ function imageLoaded(){
 }
 
 
-
-function Menu(){
-  this.x = 0;
-  this.y = 0;
-  this.height = 100;
-  this.expanding = false;
-  this.contracting = false;
-  this.visible = false;
-  this.slideTimer = new Timer(300);
-}
-
-Menu.prototype = {
-  constructor:Menu,
-
-  draw:function(){
-    this.handleSliding();
-    push();
-    translate(this.x, height + this.y);
-    image(gradient, 0, -10, width, 10);
-    fill(0);
-    rect(width/2, -25, 200, 30, 10, 10, 0, 0);
-    rect(width/2, this.height/2, width, this.height);
-    stroke(70);
-    line(width/2 - 90, -30, width/2 + 90, -30);
-    line(width/2 - 90, -25, width/2 + 90, -25);
-    line(width/2 - 90, -20, width/2 + 90, -20);
-    this.drawInterface();
-    pop();
-  },
-
-  drawInterface:function(){
-    // TODO: make button class with callback/listener
-    if(img != undefined){
-      image(img, 10, 10, 80, 80);
-    }
-    if(bwImg != undefined){
-      image(bwImg, 110, 10, 80, 80);
-    }
-  },
-
-  handleSliding:function(){
-    if(this.expanding){
-      if(this.slideTimer.isFinished()){
-        this.y = -this.height;
-        this.expanding = false;
-        this.visible = true;
-      } else {
-        this.y = 0 - this.slideTimer.sinProgress() * this.height;
-      }
-    } else if(this.contracting){
-      if(this.slideTimer.isFinished()){
-        this.y = 0;
-        this.contracting = false;
-        this.visible = false;
-      } else {
-        this.y = (0-this.height) + this.slideTimer.sinProgress() * this.height;
-      }
-    }
-  },
-
-  contract:function(){
-    if(!this.contracting && this.visible){
-      this.contracting = true;
-      this.expanding = false;
-      this.slideTimer.start();
-    }
-  },
-
-  expand:function(){
-    if(!this.expanding && !this.visible){
-      this.expanding = true;
-      this.contracting = false;
-      this.slideTimer.start();
-    }
-  }
-}
+//
+// function Menu(){
+//   this.x = 0;
+//   this.y = 0;
+//   this.height = 100;
+//   this.expanding = false;
+//   this.contracting = false;
+//   this.visible = false;
+//   this.slideTimer = new Timer(300);
+// }
+//
+// Menu.prototype = {
+//   constructor:Menu,
+//
+//   draw:function(){
+//     this.handleSliding();
+//     push();
+//     translate(this.x, height + this.y);
+//     image(gradient, 0, -10, width, 10);
+//     fill(0);
+//     rect(width/2, -25, 200, 30, 10, 10, 0, 0);
+//     rect(width/2, this.height/2, width, this.height);
+//     stroke(70);
+//     line(width/2 - 90, -30, width/2 + 90, -30);
+//     line(width/2 - 90, -25, width/2 + 90, -25);
+//     line(width/2 - 90, -20, width/2 + 90, -20);
+//     this.drawInterface();
+//     pop();
+//   },
+//
+//   drawInterface:function(){
+//     // TODO: make button class with callback/listener
+//     if(img != undefined){
+//       image(img, 10, 10, 80, 80);
+//     }
+//     if(bwImg != undefined){
+//       image(bwImg, 110, 10, 80, 80);
+//     }
+//   },
+//
+//   handleSliding:function(){
+//     if(this.expanding){
+//       if(this.slideTimer.isFinished()){
+//         this.y = -this.height;
+//         this.expanding = false;
+//         this.visible = true;
+//       } else {
+//         this.y = 0 - this.slideTimer.sinProgress() * this.height;
+//       }
+//     } else if(this.contracting){
+//       if(this.slideTimer.isFinished()){
+//         this.y = 0;
+//         this.contracting = false;
+//         this.visible = false;
+//       } else {
+//         this.y = (0-this.height) + this.slideTimer.sinProgress() * this.height;
+//       }
+//     }
+//   },
+//
+//   contract:function(){
+//     if(!this.contracting && this.visible){
+//       this.contracting = true;
+//       this.expanding = false;
+//       this.slideTimer.start();
+//     }
+//   },
+//
+//   expand:function(){
+//     if(!this.expanding && !this.visible){
+//       this.expanding = true;
+//       this.contracting = false;
+//       this.slideTimer.start();
+//     }
+//   }
+// }
